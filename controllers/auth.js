@@ -83,7 +83,7 @@ module.exports = {
       const salt = await bcrypt.genSalt(10);
       newItem.matkhau = await bcrypt.hash(matkhau, salt);
       await newItem.save();
-      let users = await Accounts.find().populate('donvi);
+      let users = await Accounts.find().populate('donvi');
       res.status(200).json({ status: "success", users, message: "Thêm tài khoản thành công" })
     } catch (error) {
       console.log("lỗi: ", error.message);
@@ -121,7 +121,7 @@ module.exports = {
 
     try {
       await Accounts.findByIdAndDelete(id);
-      let users = await Accounts.find().populate('donvi);
+      let users = await Accounts.find().populate('donvi');
 
       res.status(200).json({ status: "success", users, message: "Xóa tài khoản thành công" })
     } catch (error) {
